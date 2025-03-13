@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOO - Zarządzanie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>System Zarządzania ZOO</h1>
+
+    <!-- Formularze i sekcje wyświetlania -->
+    <!-- Zwierzęta -->
+    <h2>Dodaj Zwierzę</h2>
+    <form id="animalForm">
+        <label for="name" >Nazwa:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="species">Gatunek:</label>
+        <input type="text" id="species" name="species" required pattern="^[^0-9]*$" title="Nie używaj cyfr.">
+        <label for="age">Wiek:</label>
+        <input type="number" id="age" name="age" required step="1" min="0" max="200">
+        <label for="description">Opis:</label>
+        <input type="text" id="description" name="description">
+        <label for="habitat">Siedlisko:</label>
+        <input type="text" id="habitat" name="habitat" required pattern="^[^0-9]*$" title="Nie używaj cyfr.">
+        <label for="diet">Dieta:</label>
+        <select id="diet" name="diet" required>
+            <option value="roślinożerca">Roślinożerca</option>
+            <option value="mięsożerca">Mięsożerca</option>
+            <option value="padlinożerca">Padlinożerca</option>
+            <option value="wszystkożerca">Wszystkożerca</option>
+        </select>
+        <label for="healthStatus">Status zdrowia:</label>
+        <select id="healthStatus" name="healthStatus" required>
+            <option value="zdrowy">Zdrowy</option>
+            <option value="chory">Chory</option>
+            <option value="ranny">Ranny</option>
+        </select>
+        <button type="submit" class="add-item-button">Dodaj Zwierzę</button>
+    </form>
+
+    <h3>Wyszukiwanie zwierząt w bazie MongoDB</h3>
+    <form id="search-form1" class="search-form-universal">
+        <div class="form-group">
+            <label for="field-select1">Wybierz pole:</label>
+            <select id="field-select1" name="field">
+
+                <option value="name">Nazwa</option>
+                <option value="species">Gatunek</option>
+                <option value="age">Wiek</option>
+                <option value="habitat">Siedlisko</option>
+                <option value="diet">Dieta</option>
+                <option value="healthStatus">Status zdrowia</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="operator-select1">Wybierz operator:</label>
+            <select id="operator-select1" name="operator">
+                <option value="=">=</option>
+                <option value=">">&gt;</option>
+                <option value="<">&lt;</option>
+                <option value=">=">&gt;=</option>
+                <option value="<=">&lt;=</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="value-input1">Wprowadź wartość:</label>
+            <input type="text" id="value-input1" name="value" placeholder="Wprowadź wartość">
+        </div>
+        <button type="submit" class="search-form-button">Szukaj</button>
+    </form>
+    <br>
+    <div id="search-results1"></div>
+
+    <h3>Lista Zwierząt</h3>
+    <div id="animalsList"></div>
+
+    
+
+    <!-- Pracownicy -->
+    <h2>Dodaj Pracownika</h2>
+    <form id="employeeForm">
+        <label for="employeeName">Imię i nazwisko:</label>
+        <input type="text" id="employeeName" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="phone">Telefon:</label>
+        <input type="text" id="phone" name="phone" required>
+        <label for="position">Stanowisko:</label>
+        <input type="text" id="position" name="position" required pattern="^[^0-9]*$" title="Nie używaj cyfr.">
+        <label for="assignedAnimal">ID przypisanego zwierzęcia:</label>
+        <input type="number" id="assignedAnimal" name="assignedAnimal" step="1" min="0">
+        <button type="submit" class="add-item-button">Dodaj Pracownika</button>
+    </form>
+
+    <h3>Wyszukiwanie pracowników w bazie MongoDB</h3>
+    <form id="search-form2" class="search-form-universal">
+        <div class="form-group">
+            <label for="field-select2">Wybierz pole:</label>
+            <select id="field-select2" name="field">
+                <option value="name">Imię i nazwisko</option>
+                <option value="email">Email</option>
+                <option value="phone">Telefon</option>
+                <option value="position">Stanowisko</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="value-input2">Wprowadź wartość:</label>
+            <input type="text" id="value-input2" name="value" placeholder="Wprowadź wartość">
+        </div>
+        <button type="submit" class="search-form-button">Szukaj</button>
+    </form>
+
+    <br>
+    <div id="search-results2"></div>
+
+    <h3>Lista Pracowników</h3>
+    <div id="employeesList"></div>
+
+    <!-- Wydarzenia -->
+    <h2>Dodaj Wydarzenie</h2>
+    <form id="eventForm">
+        <label for="title">Tytuł:</label>
+        <input type="text" id="title" name="title" required>
+        <label for="description">Opis:</label>
+        <input type="text" id="description" name="description">
+        <label for="animal">ID zwierzęcia:</label>
+        <input type="number" id="animal" name="animal" step="1" min="0">
+        <label for="time">Data i czas:</label>
+        <input type="datetime-local" id="time" name="time" required>
+        <label for="durationMinutes">Czas trwania (min):</label>
+        <input type="number" id="durationMinutes" name="durationMinutes" required step="1" min="1">
+        <label for="location">Lokalizacja:</label>
+        <input type="text" id="location" name="location" required>
+        <button type="submit" class="add-item-button">Dodaj Wydarzenie</button>
+    </form>
+    
+    <h3>Wyszukiwanie wydarzeń w bazie MongoDB</h3>
+    <form id="search-form3" class="search-form-universal">
+        <div class="form-group">
+            <label for="field-select3">Wybierz pole:</label>
+            <select id="field-select3" name="field">
+                <option value="title">Tytuł</option>
+                <option value="time">Data i czas</option>
+                <option value="durationMinutes">Czas trwania</option>
+                <option value="location">Lokalizacja</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="value-input3">Wprowadź wartość:</label>
+            <input type="text" id="value-input3" name="value" placeholder="Wprowadź wartość">
+        </div>
+        <button type="submit" class="search-form-button">Szukaj</button>
+    </form>
+
+    <br>
+    <div id="search-results3"></div>
+
+    <h3>Lista Wydarzeń</h3>
+    <div id="eventsList"></div>
+
+    <!-- Pamiątki -->
+    <h2>Dodaj Pamiątkę</h2>
+    <form id="souvenirForm">
+        <label for="souvenirName">Nazwa:</label>
+        <input type="text" id="souvenirName" name="name" required>
+        <label for="price">Cena:</label>
+        <input type="number" id="price" name="price" required min="0">
+        <label for="stock">Ilość:</label>
+        <input type="number" id="stock" name="stock" required step="1" min="1">
+        <label for="description">Opis:</label>
+        <input type="text" id="description" name="description">
+        <button type="submit" class="add-item-button">Dodaj Pamiątkę</button>
+    </form>
+
+    <h3>Wyszukiwanie pamiątek w bazie MongoDB</h3>
+    <form id="search-form4" class="search-form-universal">
+        <div class="form-group">
+            <label for="field-select4">Wybierz pole:</label>
+            <select id="field-select4" name="field">
+                <option value="name">Nazwa</option>
+                <option value="price">Cena</option>
+                <option value="stock">Ilość</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="operator-select4">Wybierz operator:</label>
+            <select id="operator-select4" name="operator">
+                <option value="=">=</option>
+                <option value=">">&gt;</option>
+                <option value="<">&lt;</option>
+                <option value=">=">&gt;=</option>
+                <option value="<=">&lt;=</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="value-input4">Wprowadź wartość:</label>
+            <input type="text" id="value-input4" name="value" placeholder="Wprowadź wartość">
+        </div>
+        <button type="submit" class="search-form-button">Szukaj</button>
+    </form>
+
+    <br>
+    <div id="search-results4"></div>
+
+    <h3>Lista Pamiątek</h3>
+    <div id="souvenirsList"></div>
+
+    <script>
+        // Universal form handling function
+        async function handleFormSubmit(formId, endpoint, callback) {
+            const form = document.getElementById(formId);
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = Object.fromEntries(new FormData(form).entries());
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    alert('Dodano!');
+                    form.reset();
+                    callback();
+                }
+            });
+        }
+
+        // Universal data loading function
+        async function loadData(endpoint, listId, formatCallback) {
+            const list = document.getElementById(listId);
+            const response = await fetch(endpoint);
+            const data = await response.json();
+
+            list.innerHTML = '';
+            data.forEach(item => {
+                const div = document.createElement('div');
+                div.innerHTML = formatCallback(item);
+                list.appendChild(div);
+            });
+        }
+
+        // Format callbacks
+        function formatAnimal(animal) {
+            return `
+                ${animal.species} o imieniu: ${animal.name}, - Wiek: ${animal.age}.
+                <br>Siedlisko: ${animal.habitat}, Dieta: ${animal.diet}, Status zdrowia: ${animal.healthStatus}.
+                <br>Opis: ${animal.description || "Brak opisu"},<br> ID: ${animal._id}.
+                <button class="edit-button" onclick="editAnimal('${animal._id}')">Edytuj</button>
+                <button class="delete-button" onclick="deleteAnimal('${animal._id}')">Usuń</button>
+                <button class="health-button" onclick="changeHealthStatus('${animal._id}')">Status zdrowia</button>
+            `;
+        }
+
+        function formatEmployee(employee) {
+            let animal = "Nieprzypisane zwierzę";
+            let species = "Nieznany gatunek";
+            let animalId = "Brak ID";
+
+            if (employee.assignedAnimal) {
+                if (typeof employee.assignedAnimal === "object") {
+                    if (employee.assignedAnimal.name) {
+                        animal = employee.assignedAnimal.name;
+                    }
+                    if (employee.assignedAnimal.species) {
+                        species = employee.assignedAnimal.species;
+                    }
+                    if (employee.assignedAnimal._id) {
+                        animalId = employee.assignedAnimal._id;
+                    }
+                } else {
+                    animal = employee.assignedAnimal;
+                    animalId = employee.assignedAnimal;
+                }
+            }
+
+            return `
+                ${employee.name}, kontakt: [${employee.email}, ${employee.phone}], ${employee.position}.
+                <br>ID przypisanego zwierzęcia: ${animalId}.
+                <button class="edit-button" onclick="editEmployee('${employee._id}')">Edytuj</button>
+                <button class="delete-button" onclick="deleteEmployee('${employee._id}')">Usuń</button>
+            `;
+        }
+
+        function formatEvent(event) {
+            let animal = "Nieprzypisane zwierzę";
+            let species = "Nieznany gatunek";
+            let animalId = "Brak ID";
+
+            if (event.animal) {
+                if (typeof event.animal === "object") {
+                    if (event.animal.name) {
+                        animal = event.animal.name;
+                    }
+                    if (event.animal.species) {
+                        species = event.animal.species;
+                    }
+                    if (event.animal._id) {
+                        animalId = event.animal._id;
+                    }
+                } else {
+                    animal = event.animal;
+                    animalId = event.animal;
+                }
+            }
+
+            return `
+                "${event.title}" - (${event.location}) - ${new Date(event.time).toLocaleString()}.
+                <br>Opis: ${event.description || "Brak opisu"}
+                <br>Czas trwania: ${event.durationMinutes} minut.
+                <br>ID zwierzęcia: ${animalId}.
+                <button class="edit-button" onclick="editEvent('${event._id}')">Edytuj</button>
+                <button class="delete-button" onclick="deleteEvent('${event._id}')">Usuń</button>
+            `;
+        }
+
+        function formatSouvenir(souvenir) {
+            return `
+                ${souvenir.name} - Cena: ${souvenir.price} zł, Ilość: ${souvenir.stock}.
+                <br>Opis: ${souvenir.description || "Brak opisu"}
+                <button class="edit-button" onclick="editSouvenir('${souvenir._id}')">Edytuj</button>
+                <button class="delete-button" onclick="deleteSouvenir('${souvenir._id}')">Usuń</button>
+            `;
+        }
+
+        async function deleteAnimal(id) {
+            if (confirm(`Usunąć zwierzę o ID: ${id}?`)) {
+                const response = await fetch(`/animals/${id}`, { method: 'DELETE' });
+                if (response.ok) loadData('/animals', 'animalsList', formatAnimal);
+            }
+        }
+
+        async function editAnimal(id) {
+            const currentDataResponse = await fetch(`/animals/${id}`);
+            if (!currentDataResponse.ok) {
+                alert('Nie udało się pobrać danych zwierzęcia.');
+                return;
+            }
+            const currentData = await currentDataResponse.json();
+
+            const input = prompt('Podaj nową nazwę, gatunek, wiek, opis i siedlisko (oddzielone średnikami, pusta wartość nie zmieni obecnego pola):');
+            const [name, species, age, description, habitat] = input.split(';').map(item => item.trim());
+            const animalData = {
+                name: name || currentData.name,
+                species: species || currentData.species,
+                age: age || currentData.age,
+                description: description || currentData.description,
+                habitat: habitat || currentData.habitat
+            };
+            const response = await fetch(`/animals/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify( animalData )
+            });
+            if (response.ok) loadData('/animals', 'animalsList', formatAnimal);
+        }
+        
+        async function changeHealthStatus(id) {
+            const status = prompt('Podaj nowy status zdrowia (zdrowy, chory, ranny):');
+            if (['zdrowy', 'chory', 'ranny'].includes(status)) {
+                try {
+                    const response = await fetch(`/animals/${id}/health`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ healthStatus: status })
+                    });
+                    if (response.ok) {
+                        loadData('/animals', 'animalsList', formatAnimal);
+                    } else {
+                        alert('Wystąpił błąd podczas aktualizacji statusu zdrowia.');
+                    }
+                } catch (err) {
+                    console.error('Błąd:', err);
+                    alert('Błąd połączenia z serwerem.');
+                }
+            } else {
+                alert('Nieprawidłowy status zdrowia.');
+            }
+        }
+
+        async function deleteEmployee(id) {
+            if (confirm(`Usunąć pracownika? o ID: ${id}`)) {
+                const response = await fetch(`/employees/${id}`, { method: 'DELETE' });
+                if (response.ok) loadData('/employees', 'employeesList', formatEmployee);
+            }
+        }
+
+        async function editEmployee(id) {
+            const currentDataResponse = await fetch(`/employees/${id}`);
+            if (!currentDataResponse.ok) {
+                alert('Nie udało się pobrać danych pracownika.');
+                return;
+            }
+            const currentData = await currentDataResponse.json();
+
+            const input = prompt('Podaj nowy e-mail, nr telefonu i stanowisko (oddzielone średnikiem, pusta wartość nie zmieni obecnego pola):');
+            const [email, phone, position] = input.split(';').map(item => item.trim());
+            const employeeData = {
+                email: email || currentData.email,
+                phone: phone || currentData.phone,
+                position: position || currentData.position
+            };
+            const response = await fetch(`/employees/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify( employeeData )
+            });
+            if (response.ok) loadData('/employees', 'employeesList', formatEmployee);
+        }
+
+        async function deleteEvent(id) {
+            if (confirm(`Usunąć wydarzenie o ID: ${id}?`)) {
+                const response = await fetch(`/events/${id}`, { method: 'DELETE' });
+                if (response.ok) loadData('/events', 'eventsList', formatEvent);
+            }
+        }
+
+        async function editEvent(id) {
+            const currentDataResponse = await fetch(`/events/${id}`);
+            if (!currentDataResponse.ok) {
+                alert('Nie udało się pobrać danych wydarzenia.');
+                return;
+            }
+            const currentData = await currentDataResponse.json();
+            const input = prompt('Podaj nowy tytuł, opis, czas trwania i lokalizację (oddzielone średnikiem, pusta wartość nie zmieni obecnego pola):');
+            const [title, description, durationMinutes, location] = input.split(';').map(item => item.trim());
+            const eventData = {
+                title: title || currentData,
+                description: description || currentData.description,
+                durationMinutes: durationMinutes || currentData.durationMinutes,
+                location: location || currentData.location
+            };
+            const response = await fetch(`/events/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify( eventData )
+            });
+            if (response.ok) loadData('/events', 'eventsList', formatEvent);
+        }
+
+        async function deleteSouvenir(id) {
+            if (confirm(`Usunąć pamiątkę o ID: ${id}?`)) {
+                const response = await fetch(`/souvenirs/${id}`, { method: 'DELETE' });
+                if (response.ok) loadData('/souvenirs', 'souvenirsList', formatSouvenir);
+            }
+        }
+
+        async function editSouvenir(id) {
+            const currentDataResponse = await fetch(`/souvenirs/${id}`);
+            if (!currentDataResponse.ok) {
+                alert('Nie udało się pobrać danych pamiątki.');
+                return;
+            }
+            const currentData = await currentDataResponse.json();
+            const input = prompt('Podaj nową nazwę, cenę, ilość i opis (oddzielone średnikami, pusta wartość nie zmieni obecnego pola):');
+            const [name, price, stock, description] = input.split(';').map(item => item.trim());
+            const souvenirData = {
+                name: name || currentData.name,
+                price: price || currentData.price,
+                stock: stock || currentData.stock,
+                description: description || currentData.description
+            };
+            const response = await fetch(`/souvenirs/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify( souvenirData )
+            });
+            if (response.ok) loadData('/souvenirs', 'souvenirsList', formatSouvenir);
+        }
+
+            document.getElementById('search-form1').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const field = document.getElementById('field-select1').value;
+            const value = document.getElementById('value-input1').value;
+            const operator = document.getElementById('operator-select1').value;
+            const response = await fetch('/animals/search', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ field, operator, value })
+            });
+            if (response.ok) {
+                const results = await response.json();
+                const searchList = document.getElementById('search-results1');
+                searchList.innerHTML = '';
+                results.forEach(animal => {
+                    const div = document.createElement('div');
+                    div.classList.add('event-class');
+                    div.innerHTML = formatAnimal(animal);
+                    searchList.appendChild(div);
+                });
+            }
+        });
+
+        document.getElementById('search-form2').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const field = document.getElementById('field-select2').value;
+            const value = document.getElementById('value-input2').value;
+            const response = await fetch('/employees/search', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ field, value })
+            });
+            if (response.ok) {
+                const results = await response.json();
+                const searchList = document.getElementById('search-results2');
+                searchList.innerHTML = '';
+                results.forEach(employee => {
+                    const div = document.createElement('div');
+                    div.classList.add('event-class');
+                    div.innerHTML = formatEmployee(employee);
+                    searchList.appendChild(div);
+                });
+            } else {
+                console.error("Search failed:", await response.text());
+            }
+        });
+
+        document.getElementById('search-form3').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const field = document.getElementById('field-select3').value;
+            const value = document.getElementById('value-input3').value;
+            const response = await fetch('/events/search', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ field, value })
+            });
+            if (response.ok) {
+                const results = await response.json();
+                const searchList = document.getElementById('search-results3');
+                searchList.innerHTML = '';
+                results.forEach(event => {
+                    const div = document.createElement('div');
+                    div.classList.add('event-class');
+                    div.innerHTML = formatEvent(event);
+                    searchList.appendChild(div);
+                });
+            }
+        });
+    
+        document.getElementById('search-form4').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const field = document.getElementById('field-select4').value;
+            const value = document.getElementById('value-input4').value;
+            const operator = document.getElementById('operator-select4').value;
+            const response = await fetch('/souvenirs/search', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ field, operator, value })
+            });
+            if (response.ok) {
+                const results = await response.json();
+                const searchList = document.getElementById('search-results4');
+                searchList.innerHTML = '';
+                results.forEach(souvenir => {
+                    const div = document.createElement('div');
+                    div.classList.add('event-class');
+                    div.innerHTML = formatSouvenir(souvenir);
+                    searchList.appendChild(div);
+                });
+            }
+        });
+
+        handleFormSubmit('animalForm', '/animals', () => loadData('/animals', 'animalsList', formatAnimal));
+        handleFormSubmit('employeeForm', '/employees', () => loadData('/employees', 'employeesList', formatEmployee));
+        handleFormSubmit('eventForm', '/events', () => loadData('/events', 'eventsList', formatEvent));
+        handleFormSubmit('souvenirForm', '/souvenirs', () => loadData('/souvenirs', 'souvenirsList', formatSouvenir));
+
+        loadData('/animals', 'animalsList', formatAnimal);
+        loadData('/employees', 'employeesList', formatEmployee);
+        loadData('/events', 'eventsList', formatEvent);
+        loadData('/souvenirs', 'souvenirsList', formatSouvenir);
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadData('/animals', 'animalsList', formatAnimal);
+            await loadData('/employees', 'employeesList', formatEmployee);
+            await loadData('/events', 'eventsList', formatEvent);
+            await loadData('/souvenirs', 'souvenirsList', formatSouvenir);
+        });
+        
+    </script>
+</body>
+</html>

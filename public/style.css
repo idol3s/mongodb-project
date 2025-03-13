@@ -1,0 +1,449 @@
+body {
+    font-family: 'Courier New', monospace;
+    margin-left: 10px;
+    background: rgb(232,140,180);
+    background: radial-gradient(circle, rgba(232,140,180,1) 0%, rgba(151,148,233,1) 100%);
+}
+
+h1 {
+    font-size: 40px;
+    color: darkblue;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 28px;
+    color: black;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+    font-size: 22px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-results1 div,
+#search-results2 div,
+#search-results3 div,
+#search-results4 div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+#search-results1 div,
+#search-results2 div,
+#search-results3 div,
+#search-results4 div {
+    border: 1px solid #888686;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: hsla(300, 1%, 77%);
+    margin-left: 10px;
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#animalsList, #employeesList, #eventsList, #souvenirsList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+#animalsList div,
+#employeesList div,
+#eventsList div,
+#souvenirsList div {
+    border: 1px solid #888686;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: hsl(0, 1%, 87%);
+    margin-bottom: 10px;
+    width: 600px;
+    display: flex;
+    justify-content: stretch;
+    box-sizing: border-box;
+    height: 200px;
+}
+
+#animalsList div,
+#employeesList div,
+#eventsList div,
+#souvenirsList div {
+    overflow: hidden;
+}
+
+.delete-button, .edit-button, .health-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-top: auto;
+}
+
+.edit-button {
+    background-color: #8a8d0b;
+}
+
+.health-button {
+    background-color: #e0b124;
+    width: 80px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-item-button {
+    background-color: hsl(122, 39%, 57%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 120px;
+    height: 50px;
+    margin: 10px auto;
+    display: block;
+    
+}
+
+.add-item-button:hover {
+    background-color: hsl(122, 39%, 20%, 0.6);
+}
+
+#animalForm {
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+#animalForm label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+#animalForm input, #animalForm select {
+    width: 85%;
+    padding: 10px;
+    margin-bottom: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+}
+
+#animalForm input[type="text"], 
+#animalForm input[type="number"] {
+    background-color: #fff;
+}
+
+#animalForm select {
+    background-color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 1px solid #ccc;
+}
+
+#animalForm input:focus, #animalForm select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#animalForm > * {
+    margin-bottom: 12px;
+}
+
+#employeeForm {
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+#employeeForm h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#employeeForm label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+#employeeForm input, #employeeForm select {
+    width: 85%;
+    padding: 10px;
+    margin-bottom: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+}
+
+#employeeForm input[type="text"], 
+#employeeForm input[type="email"],
+#employeeForm input[type="number"] {
+    background-color: #fff;
+}
+
+#employeeForm select {
+    background-color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 1px solid #ccc;
+}
+
+#employeeForm input:focus, #employeeForm select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#employeeForm > * {
+    margin-bottom: 12px;
+}
+
+#eventForm {
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+#eventForm h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#eventForm label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+#eventForm input, #eventForm select {
+    width: 85%;
+    padding: 10px;
+    margin-bottom: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+}
+
+#eventForm input[type="text"], 
+#eventForm input[type="number"],
+#eventForm input[type="datetime-local"] {
+    background-color: #fff;
+}
+
+#eventForm select {
+    background-color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 1px solid #ccc;
+}
+
+#eventForm input:focus, #eventForm select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#eventForm > * {
+    margin-bottom: 12px;
+}
+
+#souvenirForm {
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+#souvenirForm h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#souvenirForm label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+#souvenirForm input, #souvenirForm select {
+    width: 85%;
+    padding: 10px;
+    margin-bottom: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+}
+
+#souvenirForm input[type="text"], 
+#souvenirForm input[type="number"] {
+    background-color: #fff;
+}
+
+#souvenirForm select {
+    background-color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 1px solid #ccc;
+}
+
+#souvenirForm input:focus, #souvenirForm select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#souvenirForm > * {
+    margin-bottom: 12px;
+}
+
+.search-form-universal {
+    width: 75%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.search-form-universal h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.search-form-universal label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 6px;
+    color: #333;
+    width: 100%;
+    text-align: left;
+}
+
+.search-form-universal input, .search-form-universal select {
+    width: 85%;
+    padding: 10px;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.search-form-universal input[type="text"], .search-form-universal select {
+    background-color: #fff;
+}
+
+.search-form-universal select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 1px solid #ccc;
+}
+
+.search-form-universal input:focus, .search-form-universal select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.search-form-universal button {
+    background-color: hsla(253, 100%, 57%, 0.6);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 120px;
+    height: 50px;
+    margin: 20px auto;
+    display: block;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.search-form-universal button:hover {
+    background-color: hsla(253, 100%, 20%, 0.6);
+}
+
+.search-form-universal > * {
+    margin-bottom: 12px;
+}
+
+.search-form-universal {
+    text-align: center;
+    color: #333;
+    font-size: 1rem;
+    margin-top: 20px;
+}
